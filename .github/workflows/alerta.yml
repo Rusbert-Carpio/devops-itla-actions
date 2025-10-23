@@ -1,0 +1,17 @@
+name: Notificar a ntfy.sh al subir a main
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  notificar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener el código
+        uses: actions/checkout@v4
+
+      - name: Enviar notificación a ntfy.sh
+        run: |
+          echo "🔔 Nuevo commit detectado en la rama main del proyecto de Rusbert Carpio" \
+          | curl -d @- ntfy.sh/devops-itla
